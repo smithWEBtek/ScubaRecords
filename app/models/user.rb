@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  attr_accessor :login
+  #attr_accessor :login
 
   has_many :records
   has_many :sites, through: :records
@@ -7,5 +7,5 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, :authentication_keys => [:login]
+         :recoverable, :rememberable, :trackable, :validatable 
 end
