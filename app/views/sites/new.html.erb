@@ -11,6 +11,40 @@
     <%= f.text_field :location %>
   </p>
 
+  <%= f.fields_for :records do |record| %>
+    <p>
+      <%= record.label :date %>
+      <%= record.text_field :date %>
+    </p>
+
+    <p>
+      <%= record.label :dive_time %>
+      <%= record.text_field :dive_time %>
+    </p>
+
+    <p>
+      <%= record.label :max_depth_in_feet %>
+      <%= record.number_field :max_depth %>
+    </p>
+
+    <p>
+      <%= record.label :water_temperature_in_fahrenheit %>
+      <%= record.number_field :water_temperature %>
+    </p>
+
+    <p>
+      <%= record.label :activity %>
+      <%= record.text_field :activity %>
+    </p>
+
+    <p>
+      <%= record.label :notes %>
+      <%= record.text_area :notes %>
+    </p>
+
+    <%= record.hidden_field :user_id, value: current_user.id %>
+  <% end %>
+
   <%= f.submit %>
-  
+
 <% end %>

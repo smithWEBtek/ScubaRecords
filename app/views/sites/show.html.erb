@@ -1,3 +1,18 @@
 <h2><%= @site.name %></h2>
 
 <h3><%= @site.location %></h3>
+
+<h4>Records</h4>
+
+
+<% @site.records.each do |record| %>
+  <li>
+    <p><%= record.notes %></p>
+    <p><%= record.notes %></p>
+    <p><%= record.notes %></p>
+    <p><%= record.notes %></p>
+    <p><%= record.notes %></p>
+    <p><%= record.notes %></p>
+  </li>
+  <hr>
+<% end %>

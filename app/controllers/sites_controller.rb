@@ -12,10 +12,11 @@ class SitesController < ApplicationController
 
   def new
     @site = Site.new
+    @site.records.build(params[:records_attributes])
   end
 
   def create
-    @site = current_user.sites.build(site_params)
+    @site = Site.new(site_params)
     if @site.save
       redirect_to site_path(@site)
     else
@@ -45,7 +46,7 @@ class SitesController < ApplicationController
   private
 
     def site_params
-      params.require(:site).permit(:name, :location)
+      params.require(:site).permit(:name, :location, records_attributes: [:date, :dive_time, :max_depth, :water_temperature, :activity, :notes, :user_id])
     end
 
 end
