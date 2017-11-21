@@ -1,28 +1,3 @@
 <h2><%= @site.name %></h2>
 
 <h3><%= @site.location %></h3>
-
-<h4>Records</h4>
-
-
-<% @site.records.each do |record| %>
-  <li>
-
-    <p>Date:<%= record.date %></p>
-
-    <p>Dive Time:<%= record.dive_time %></p>
-
-    <p>Max Depth:<%= record.max_depth %></p>
-
-    <p>Water Temperature:<%= record.water_temperature %></p>
-
-    <p>Activity:<%= record.activity %></p>
-
-    <p>Notes:<%= record.notes %></p>
-  </li>
-  <hr>
-<% end %>
-
-<% if current_user %>
-  <%= link_to "Edit Dive", edit_site_path(@site) %>
-<% end %>
