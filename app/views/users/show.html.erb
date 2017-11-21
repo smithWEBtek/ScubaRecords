@@ -1,1 +1,15 @@
 <h1>Hello! <%= @user.username.capitalize %></h1>
+
+<h3>What do you want to do?</h3>
+
+<p>
+  <%= link_to "Add a Site", new_user_site_path(@user) %>
+</p>
+
+<p>
+  <%= link_to "View your Sites", user_sites_path(@user) %>
+</p>
+
+<p>
+  <%= link_to "View all Sites", sites_path %>
+</p>
