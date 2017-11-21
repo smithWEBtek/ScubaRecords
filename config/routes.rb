@@ -5,8 +5,10 @@ Rails.application.routes.draw do
   root 'welcome#home'
 
   resources :users do
-    resources :sites
+    resources :sites, only: [:new, :create, :edit, :update, :destroy]
   end
+
+  resources :sites, only: [:index, :show]
 
   resources :records
 
