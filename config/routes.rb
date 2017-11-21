@@ -4,8 +4,10 @@ Rails.application.routes.draw do
 
   root 'sites#index'
 
-  resources :sites do
-    resources :records
+  resources :users do
+    resources :sites
   end
 
+  resources :records
+  
 end

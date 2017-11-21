@@ -11,12 +11,14 @@ class SitesController < ApplicationController
   end
 
   def new
-    @site = Site.new
-    @site.records.build(params[:records_attributes])
+    #@site = Site.new
+    @site = current_user.sites.build
+    @site.records.build
   end
 
   def create
-    @site = Site.new(site_params)
+    #@site = Site.new(site_params)
+    @site = current_user.sites.build(site_params)
     if @site.save
       redirect_to site_path(@site)
     else
@@ -25,11 +27,12 @@ class SitesController < ApplicationController
   end
 
   def edit
-    @site = Site.find(params[:id])
+    #@site = Site.find(params[:id])
+    @site = current_user.sites.find(params[:id])
   end
 
   def update
-    @site = Site.find(params[:id])
+    @site = current_user.sites.find(params[:id])
     if @site.update(site_params)
       redirect_to site_path(@site)
     else
