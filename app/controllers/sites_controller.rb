@@ -1,9 +1,14 @@
+require 'pry'
 class SitesController < ApplicationController
 
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    @sites = Site.all.order("created_at DESC")
+    if params[:user_id] && current_user
+      @sites = current_user.sites.order("created_at DESC")
+    else
+      @sites = Site.all.order("created_at DESC")
+    end
   end
 
   def show
@@ -15,8 +20,10 @@ class SitesController < ApplicationController
   end
 
   def create
-    @site = current_user.sites.build(site_params)
-    if @site.saves
+    @site = current_user.sites.create!(site_params)
+    #@site = current_user.sites.build(site_params)
+    if @site.save
+      #current_user.sites << @site
       redirect_to user_site_path(current_user, @site)
     else
       render 'new'
@@ -24,7 +31,6 @@ class SitesController < ApplicationController
   end
 
   def edit
-    #@site = Site.find(params[:id])
     @site = current_user.sites.find(params[:id])
   end
 
