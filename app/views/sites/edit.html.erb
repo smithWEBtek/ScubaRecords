@@ -1,6 +1,6 @@
 <h2>Edit Dive Site</h2>
 
-<%= form_for(@site) do |f| %>
+<%= form_for @site, :url => "/users/#{current_user.id}/sites/#{@site.id}", method: :patch do |f| %>
   <p>
     <%= f.label :name %>
     <%= f.text_field :name %>
