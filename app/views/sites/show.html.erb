@@ -1,3 +1,7 @@
-<h2><%= @site.name %></h2>
+<h2>Dive Name: <%= @site.name %></h2>
 
-<h3><%= @site.location %></h3>
+<h3>Dive Location: <%= @site.location %></h3>
+
+<% if current_user.id == params[:id].to_i %>
+<%= link_to "Edit Site", edit_user_site_path(current_user, @site) %>
+<% end %>
