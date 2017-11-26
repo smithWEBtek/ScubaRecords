@@ -10,6 +10,6 @@ Rails.application.routes.draw do
 
   resources :sites, only: [:index, :show]
 
-  resources :records
+  #resources :records
 
 end

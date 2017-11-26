@@ -12,7 +12,11 @@ class SitesController < ApplicationController
   end
 
   def show
-    @site = Site.find(params[:id])
+    if params[:user_id] && current_user
+      @site = current_user.sites.find(params[:id])
+    else
+      @site = Site.find(params[:id])
+    end
   end
 
   def new
@@ -44,9 +48,9 @@ class SitesController < ApplicationController
   end
 
   def destroy
-    @site = Site.find(params[:id])
+    @site = current_user.sites.find(params[:id])
     @site.destroy
-    redirect_to root_path
+    redirect_to user_sites_path(current_user)
   end
 
   private
