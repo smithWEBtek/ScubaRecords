@@ -21,6 +21,7 @@ class SitesController < ApplicationController
 
   def new
     @site = current_user.sites.build
+    @site.records.build
   end
 
   def create
@@ -56,7 +57,7 @@ class SitesController < ApplicationController
   private
 
     def site_params
-      params.require(:site).permit(:name, :location)
+      params.require(:site).permit(:name, :location, records_attributes: [:id, :date, :dive_time, :max_depth, :water_temperature, :activity, :notes])
     end
 
 end
