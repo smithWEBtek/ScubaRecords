@@ -2,32 +2,37 @@
 
 <h3>Dive Location: <%= @site.location %></h3>
 
+<ol>
 <% @site.records.each do |record| %>
-  <p>
-    Date: <%= record.date %>
-  </p>
+  <li>
+    <p>
+      Date: <%= record.date %>
+    </p>
 
-  <p>
-    Dive Time: <%= record.dive_time %>
-  </p>
+    <p>
+      Dive Time: <%= record.dive_time %>
+    </p>
 
-  <p>
-    Max Depth: <%= record.max_depth %>
-  </p>
+    <p>
+      Max Depth: <%= record.max_depth %>
+    </p>
 
-  <p>
-    Water Temperature: <%= record.water_temperature %>
-  </p>
+    <p>
+      Water Temperature: <%= record.water_temperature %>
+    </p>
 
-  <p>
-    Activity: <%= record.activity %>
-  </p>
+    <p>
+      Activity: <%= record.activity %>
+    </p>
 
-  <p>
-    Notes: <%= record.notes %>
-  </p>
+    <p>
+      Notes: <%= record.notes %>
+    </p>
+  </li>
   <hr>
-<% end %>
+  <% end %>
+</ol>
+
 
 <% if user_signed_in? && (current_user.id == params[:id].to_i) %>
 <%= link_to "Edit Site", edit_user_site_path(current_user, @site) %>

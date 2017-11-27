@@ -6,7 +6,7 @@ class Site < ApplicationRecord
   validates :name, uniqueness: true
   validates :location, presence: true
 
-  accepts_nested_attributes_for :records
-  
+  accepts_nested_attributes_for :records, :reject_if => :all_blank
+
   # scope :search, ->(site_name) { where("name LIKE ? OR location LIKE ?", "%#{site_name}%", "%#{site_name}%") }
 end
