@@ -1,4 +1,4 @@
 class Record < ApplicationRecord
-  belongs_to :user
-  belongs_to :site 
+  belongs_to :user, optional: true
+  belongs_to :site
 end
