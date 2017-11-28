@@ -10,7 +10,6 @@ class Site < ApplicationRecord
 
   def records_attributes=(records_attributes)
     records_attributes.values.each do |record_attribute|
-      binding.pry
       self.records.build(record_attribute)
     end
   end

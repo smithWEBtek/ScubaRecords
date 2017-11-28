@@ -25,7 +25,6 @@ class SitesController < ApplicationController
   end
 
   def create
-    #@site = current_user.sites.create!(site_params)
     @site = current_user.sites.build(site_params)
     if current_user.save
       redirect_to user_site_path(current_user, @site)
