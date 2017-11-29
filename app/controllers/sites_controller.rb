@@ -25,8 +25,9 @@ class SitesController < ApplicationController
   end
 
   def create
-    @site = current_user.sites.build(site_params)
-    if current_user.save
+    @site = Site.new(site_params)
+    @site.records.each { |record| record.user = current_user }
+    if @site.save
       redirect_to user_site_path(current_user, @site)
     else
       render 'new'
