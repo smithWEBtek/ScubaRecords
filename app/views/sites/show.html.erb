@@ -36,7 +36,5 @@
 </ol>
 
 
-<% if user_signed_in? && (current_user.id == params[:id].to_i) %>
 <%= link_to "Edit Site", edit_user_site_path(current_user, @site) %>
 <%= link_to "Delete Site", user_site_path(current_user, @site), method: :delete, data: { confirm: "Are you sure?" }  %>
-<% end %>
