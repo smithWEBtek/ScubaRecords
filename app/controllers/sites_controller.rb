@@ -40,7 +40,7 @@ class SitesController < ApplicationController
 
   def update
     @site = current_user.sites.find(params[:id])
-    if @site.update(site_params)
+    if @site.update_attributes(site_params)
       redirect_to user_site_path(current_user, @site)
     else
       render 'edit'
