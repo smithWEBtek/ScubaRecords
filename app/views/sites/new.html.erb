@@ -1,6 +1,6 @@
 <h2>Add a new Dive Site to your Dive List</h2>
 
-<%= form_for @site, :url => "/users/#{current_user.id}/sites/#{@site.id}" do |f| %>
+<%= form_for @site do |f| %>
   <p>
     <%= f.label :name %>
     <%= f.text_field :name %>
