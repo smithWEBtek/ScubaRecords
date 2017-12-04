@@ -9,7 +9,6 @@ class RecordsController < ApplicationController
     @site = Site.find(params[:site_id])
     @record = Record.new(record_params)
     @record.site_id = @site.id
-    @record.user = current_user
     if @record.save
       redirect_to user_site_path(current_user, @site)
     else
