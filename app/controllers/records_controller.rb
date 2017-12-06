@@ -18,11 +18,12 @@ class RecordsController < ApplicationController
 
   def edit
     @record = Record.find(params[:id])
+    @site = @record.site
   end
 
   def update
-    @site = Site.find(params[:site_id])
     @record = Record.find(params[:id])
+    @site = @record.site
     if @record.update(record_params)
       redirect_to user_site_path(current_user, @site)
     else
