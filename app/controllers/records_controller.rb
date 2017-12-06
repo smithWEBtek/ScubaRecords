@@ -16,6 +16,20 @@ class RecordsController < ApplicationController
     end
   end
 
+  def edit
+    @record = Record.find(params[:id])
+  end
+
+  def update
+    @site = Site.find(params[:site_id])
+    @record = Record.find(params[:id])
+    if @record.update(record_params)
+      redirect_to user_site_path(current_user, @site)
+    else
+      render 'edit'
+    end
+  end
+
   private
 
     def record_params

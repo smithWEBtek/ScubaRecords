@@ -32,6 +32,10 @@
     <p>
       Notes: <%= record.notes %>
     </p>
+
+    <p>
+      <%= link_to "Edit Record", edit_site_record_path(@site, record) %>
+    </p>
   </li>
   <hr>
   <% end %>
