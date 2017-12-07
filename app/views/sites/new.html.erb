@@ -11,6 +11,8 @@
     <%= f.text_field :location %>
   </p>
 
+  <h3>Add a Record for this Dive Site</h3>
+
   <%= f.fields_for :records do |record| %>
     <p>
       <%= record.label :date %>
