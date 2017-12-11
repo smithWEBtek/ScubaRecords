@@ -1,6 +1,6 @@
 <h1>Add a Record</h1>
 
-<%= form_for([:site, @record]) do |f| %>
+<%= form_for([@site, @record]) do |f| %>
 <p>
   <%= f.label :date %>
   <%= f.text_field :date %>
