@@ -1,5 +1,5 @@
 class SitesController < ApplicationController
-
+  before_action :find_site_by_current_user, only: [:edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
@@ -34,11 +34,9 @@ class SitesController < ApplicationController
   end
 
   def edit
-    @site = current_user.sites.find(params[:id])
   end
 
   def update
-    @site = current_user.sites.find(params[:id])
     if @site.update(site_params)
       redirect_to user_site_path(current_user, @site)
     else
@@ -47,7 +45,6 @@ class SitesController < ApplicationController
   end
 
   def destroy
-    @site = current_user.sites.find(params[:id])
     @site.destroy
     redirect_to user_sites_path(current_user)
   end
@@ -56,6 +53,10 @@ class SitesController < ApplicationController
 
     def site_params
       params.require(:site).permit(:name, :location, records_attributes: [:id, :date, :dive_time, :max_depth, :water_temperature, :activity, :notes])
+    end
+
+    def find_site_by_current_user
+      @site = current_user.sites.find(params[:id])
     end
 
 end
