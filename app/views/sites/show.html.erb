@@ -34,7 +34,8 @@
     </p>
 
     <p>
-      <%= link_to "Edit Record", edit_site_record_path(@site, record) %>
+      <%= link_to "Edit Record", edit_site_record_path(@site, record) %> | 
+      <%= link_to "Delete Record", user_site_path(current_user, @site) , method: :delete, data: { confirm: "Are you sure?" } %>
     </p>
   </li>
   <hr>
