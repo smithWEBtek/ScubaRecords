@@ -1,10 +1,6 @@
 class RecordsController < ApplicationController
   before_action :authenticate_user!
 
-  def show
-    @site = Site.find(params[:site_id])
-  end
-
   def new
     @site = Site.find(params[:site_id])
     @record = Record.new
@@ -15,7 +11,7 @@ class RecordsController < ApplicationController
     @record = Record.new(record_params)
     @record.site_id = @site.id
     if @record.save
-      redirect_to site_record_path(@site, @record)
+      redirect_to user_site_path(current_user, @site)
     else
       render 'new'
     end
