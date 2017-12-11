@@ -31,10 +31,11 @@ class RecordsController < ApplicationController
     end
   end
 
-  def delete
-    @record = Record.find(params[:id])
+  def destroy
+    @site = Site.find(params[:site_id])
+    @record = @site.records.find(params[:id])
     @record.destroy
-    #redirect_to user_sites_path(current_user)
+    redirect_to user_site_path(current_user, @site)
   end
 
   private
