@@ -10,7 +10,6 @@ class RecordsController < ApplicationController
     @site = Site.find(params[:site_id])
     @record = Record.new(record_params)
     @record.site_id = @site.id
-    @record.user_id = current_user.id
     if @record.save
       redirect_to user_site_path(current_user, @site)
     else
@@ -35,7 +34,7 @@ class RecordsController < ApplicationController
 
   def destroy
     @site = Site.find(params[:site_id])
-    @record = @site.records.find(params[:id])
+    @record = Record.find(params[:id])
     @record.destroy
     redirect_to user_site_path(current_user, @site)
   end
@@ -43,6 +42,6 @@ class RecordsController < ApplicationController
   private
 
     def record_params
-      params.require(:record).permit(:date, :dive_time, :max_depth, :water_temperature, :activity, :notes)
+      params.require(:record).permit(:date, :dive_time, :max_depth, :water_temperature, :activity, :notes, :site_id, :user_id)
     end
 end
