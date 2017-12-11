@@ -32,10 +32,12 @@
     <p>
       Notes: <%= record.notes %>
     </p>
-
+    
     <p>
-      <%= link_to "Edit Record", edit_site_record_path(@site, record) %> | 
-      <%= link_to "Delete Record", user_site_path(current_user, @site) , method: :delete, data: { confirm: "Are you sure?" } %>
+      <% if user_signed_in? %>
+        <%= link_to "Edit Record", edit_site_record_path(@site, record) %> |
+        <%= link_to "Delete Record", user_site_path(current_user, @site) , method: :delete, data: { confirm: "Are you sure?" } %>
+      <% end %>
     </p>
   </li>
   <hr>
