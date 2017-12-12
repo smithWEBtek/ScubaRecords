@@ -11,11 +11,7 @@ class SitesController < ApplicationController
   end
 
   def show
-    if params[:user_id] && current_user
-      @site = current_user.sites.find(params[:id])
-    else
-      @site = Site.find(params[:id])
-    end
+    @site = Site.find(params[:id])
   end
 
   def new
