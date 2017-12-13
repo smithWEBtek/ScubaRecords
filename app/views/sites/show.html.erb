@@ -34,7 +34,7 @@
     </p>
 
     <p>
-      <% if user_signed_in? %>
+      <% if user_signed_in? && (current_user.id == record.user_id) %>
         <%= link_to "Edit Record", edit_site_record_path(@site, record) %> |
         <%= link_to "Delete Record", site_record_path(@site, record) , method: :delete, data: { confirm: "Are you sure?" } %>
       <% end %>
