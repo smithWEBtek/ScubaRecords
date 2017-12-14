@@ -11,7 +11,11 @@ class SitesController < ApplicationController
   end
 
   def show
-    @site = Site.find(params[:id])
+    if user_signed_in?
+      @site = current_user.sites.find(params[:id])
+    else
+      @site = Site.find(params[:id])
+    end
   end
 
   def new
