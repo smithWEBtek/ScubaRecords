@@ -2,7 +2,7 @@
 
 <h3>Dive Location: <%= @site.location %></h3>
 
-<h4><%= link_to "Add a New Record", new_site_record_path(@site)  %></h4>
+<%= link_to "Add a New Record", new_site_record_path(@site), class: "btn btn-outline-primary btn-sm" %>
 
 <h3>Records:</h3>
 
@@ -35,8 +35,8 @@
 
     <p>
       <% if user_signed_in? && (current_user.id == record.user_id) %>
-        <%= link_to "Edit Record", edit_site_record_path(@site, record) %> |
-        <%= link_to "Delete Record", site_record_path(@site, record) , method: :delete, data: { confirm: "Are you sure?" } %>
+        <%= link_to "Edit Record", edit_site_record_path(@site, record), class: "btn btn-primary btn-sm"  %> |
+        <%= link_to "Delete Record", site_record_path(@site, record), class: "btn btn-danger btn-sm"  , method: :delete, data: { confirm: "Are you sure?" } %>
       <% end %>
     </p>
   </li>
