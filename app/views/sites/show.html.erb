@@ -1,36 +1,46 @@
-<h2>Dive Name: <%= @site.name %></h2>
+<h2><small class="text-muted">Name:</small> <%= @site.name %></h2>
 
-<h3>Dive Location: <%= @site.location %></h3>
+<h3><small class="text-muted">Location:</small> <%= @site.location %></h3>
+
+<br>
 
 <%= link_to "Add a New Record", new_site_record_path(@site), class: "btn btn-outline-primary btn-sm" %>
 
+<br>
+<br>
+
 <h3>Records:</h3>
 
-<ol>
+<ol class="border rounded justify-content-center">
 <% @site.records.each do |record| %>
-  <li>
+
+  <li class="d-flex justify-content-center align-items-center flex-column">
     <p>
-      Date: <%= record.date %>
+      <b>Created By:</b> <em><%= record.user.username.capitalize %></em>
     </p>
 
     <p>
-      Dive Time: <%= record.dive_time %>
+      <b>Date:</b> <%= record.date %>
     </p>
 
     <p>
-      Max Depth: <%= record.max_depth %>
+      <b>Dive Time:</b> <%= record.dive_time %>
     </p>
 
     <p>
-      Water Temperature: <%= record.water_temperature %>
+      <b>Max Depth:</b> <%= record.max_depth %>
     </p>
 
     <p>
-      Activity: <%= record.activity %>
+      <b>Water Temperature:</b> <%= record.water_temperature %>
     </p>
 
     <p>
-      Notes: <%= record.notes %>
+      <b>Activity:</b> <%= record.activity %>
+    </p>
+
+    <p>
+      <b>Notes:</b> <%= record.notes %>
     </p>
 
     <p>
