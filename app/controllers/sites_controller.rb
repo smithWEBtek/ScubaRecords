@@ -4,18 +4,14 @@ class SitesController < ApplicationController
 
   def index
     if params[:user_id] && current_user
-      @sites = current_user.sites.order("created_at DESC")
+      @sites = current_user.sites.order("created_at DESC").uniq
     else
       @sites = Site.all.order("created_at DESC")
     end
   end
 
   def show
-    if user_signed_in?
-      @site = current_user.sites.find(params[:id])
-    else
-      @site = Site.find(params[:id])
-    end
+    @site = Site.find(params[:id])
   end
 
   def new

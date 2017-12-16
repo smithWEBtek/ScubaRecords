@@ -1,4 +1,4 @@
-<% if user_signed_in? && (current_user.sites == @sites) %>
+<% if user_signed_in? %>
   <h1><%= current_user.username.capitalize %> Dive Sites</h1>
 
   <% @sites.each do |site| %>
