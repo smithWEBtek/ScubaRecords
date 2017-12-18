@@ -3,8 +3,10 @@
 <h3><small class="text-muted">Location:</small> <%= @site.location %></h3>
 
 <p>
-  <%= link_to "Add a New Record", new_site_record_path(@site), class: "btn btn-outline-primary btn-sm" %>
-  <%= link_to "Back", user_path(current_user), class: "btn btn-outline-dark btn-sm" %>
+  <% if user_signed_in? %>
+    <%= link_to "Add a New Record", new_site_record_path(@site), class: "btn btn-outline-primary btn-sm" %>
+    <%= link_to "Back", user_path(current_user), class: "btn btn-outline-dark btn-sm" %>
+  <% end %>
 </p>
 
 <h3>Records:</h3>

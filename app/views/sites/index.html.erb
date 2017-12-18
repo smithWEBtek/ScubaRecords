@@ -13,6 +13,11 @@
   <% end %>
 <% else %>
   <h1>Dive Sites</h1>
+
+  <p>
+    <%= link_to "Back", root_path, class: "btn btn-outline-dark btn-sm" %>
+  </p>
+
   <% @sites.each do |site| %>
     <p>Name: <%= link_to site.name, site_path(site) %></p>
     <p>Location: <%= site.location %></p>
