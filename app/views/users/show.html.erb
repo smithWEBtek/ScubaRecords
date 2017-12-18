@@ -3,13 +3,9 @@
 <h3>What do you want to do?</h3>
 
 <p>
-  <%= link_to "Add a Site", new_user_site_path(@user) %>
-</p>
+  <%= link_to "Add a Site", new_user_site_path(@user), class: "btn btn-outline-primary" %>
 
-<p>
-  <%= link_to "View your Sites", user_sites_path(@user) %>
-</p>
+  <%= link_to "View your Sites", user_sites_path(@user), class: "btn btn-outline-secondary" %>
 
-<p>
-  <%= link_to "View all Sites", sites_path %>
+  <%= link_to "View all Sites", sites_path, class: "btn btn-outline-info" %>
 </p>
