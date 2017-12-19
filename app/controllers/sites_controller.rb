@@ -3,8 +3,11 @@ class SitesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
+    @sites = Site.all
     if params[:user_id] && current_user
       @sites = current_user.sites.order("created_at DESC").uniq
+    elsif params[:site_name]
+      @sites = Site.search(params[:site_name])
     else
       @sites = Site.all.order("created_at DESC")
     end

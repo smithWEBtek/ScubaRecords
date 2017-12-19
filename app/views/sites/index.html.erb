@@ -1,3 +1,8 @@
+<%= form_tag(sites_path, method: :get) do %>
+  <%= text_field_tag :site_name, params[:site_name] %>
+  <%= submit_tag 'Search', name: nil %>
+<% end %>
+
 <% if user_signed_in? %>
   <h1><%= current_user.username.capitalize %> Dive Sites</h1>
 
