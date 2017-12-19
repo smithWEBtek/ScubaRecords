@@ -1,13 +1,13 @@
 class RecordsController < ApplicationController
   before_action :authenticate_user!
+  before_action :find_site
+  before_action :find_record, only: [:edit, :update, :destroy]
 
   def new
-    @site = Site.find(params[:site_id])
     @record = Record.new
   end
 
   def create
-    @site = Site.find(params[:site_id])
     @record = Record.new(record_params)
     @record.site_id = @site.id
     @record.user_id = current_user.id
@@ -19,13 +19,10 @@ class RecordsController < ApplicationController
   end
 
   def edit
-    @site = Site.find(params[:site_id])
-    @record = Record.find(params[:id])
+
   end
 
   def update
-    @site = Site.find(params[:site_id])
-    @record = Record.find(params[:id])
     if @record.update(record_params)
       redirect_to user_site_path(current_user, @site)
     else
@@ -34,8 +31,6 @@ class RecordsController < ApplicationController
   end
 
   def destroy
-    @site = Site.find(params[:site_id])
-    @record = Record.find(params[:id])
     @record.destroy
     redirect_to user_site_path(current_user, @site)
   end
@@ -44,5 +39,13 @@ class RecordsController < ApplicationController
 
     def record_params
       params.require(:record).permit(:date, :dive_time, :max_depth, :water_temperature, :activity, :notes, :site_id, :user_id)
+    end
+
+    def find_site
+      @site = Site.find(params[:site_id])
+    end
+
+    def find_record
+      @record = Record.find(params[:id])
     end
 end
