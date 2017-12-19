@@ -3,6 +3,10 @@
   <%= submit_tag 'Search', name: nil %>
 <% end %>
 
+<% if @sites.blank? %>
+  <h4>There are no recipes containing the term <%= params[:site_name] %>.</h4>
+<% end %>
+
 <% if user_signed_in? %>
   <h1><%= current_user.username.capitalize %> Dive Sites</h1>
 
