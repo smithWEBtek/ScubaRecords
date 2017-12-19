@@ -1,0 +1,49 @@
+<%= form_for @site do |f| %>
+  <p>
+    <%= f.label :name %>
+    <%= f.text_field :name, class: "form-control col-sm-3" %>
+  </p>
+
+  <p>
+    <%= f.label :location %>
+    <%= f.text_field :location, class: "form-control col-sm-3" %>
+  </p>
+
+  <h3>Add a Record for this Dive Site</h3>
+
+  <%= f.fields_for :records do |record| %>
+    <p>
+      <%= record.label :date %>
+      <%= record.text_field :date, class: "form-control col-sm-3" %>
+    </p>
+
+    <p>
+      <%= record.label :dive_time %>
+      <%= record.text_field :dive_time, class: "form-control col-sm-3" %>
+    </p>
+
+    <p>
+      <%= record.label :max_depth %>
+      <%= record.number_field :max_depth, class: "form-control col-sm-3" %>
+    </p>
+
+    <p>
+      <%= record.label :water_temperature %>
+      <%= record.number_field :water_temperature, class: "form-control col-sm-3" %>
+    </p>
+
+    <p>
+      <%= record.label :activity %>
+      <%= record.text_field :activity, class: "form-control col-sm-3" %>
+    </p>
+
+    <p>
+      <%= record.label :notes %>
+      <%= record.text_area :notes, class: "form-control col-sm-6" %>
+    </p>
+
+  <% end %>
+
+  <%= f.submit "Create Site", class: "btn btn-primary" %>
+
+<% end %>
