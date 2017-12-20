@@ -14,22 +14,22 @@
   <%= f.fields_for :records do |record| %>
     <p>
       <%= record.label :date %>
-      <%= record.text_field :date, class: "form-control col-sm-3" %>
+      <%= record.date_field :date, class: "form-control col-sm-3" %>
     </p>
 
     <p>
       <%= record.label :dive_time %>
-      <%= record.text_field :dive_time, class: "form-control col-sm-3" %>
+      <%= record.text_field :dive_time, placeholder: "45 minutes", class: "form-control col-sm-3" %>
     </p>
 
     <p>
-      <%= record.label :max_depth %>
-      <%= record.number_field :max_depth, class: "form-control col-sm-3" %>
+      <%= record.label "#{:max_depth} in Feet(f)" %>
+      <%= record.number_field :max_depth, placeholder: "100", class: "form-control col-sm-3" %>
     </p>
 
     <p>
-      <%= record.label :water_temperature %>
-      <%= record.number_field :water_temperature, class: "form-control col-sm-3" %>
+      <%= record.label "#{:water_temperature} in Fahrenheit" %>
+      <%= record.number_field :water_temperature, placeholder: "65", class: "form-control col-sm-3" %>
     </p>
 
     <p>
