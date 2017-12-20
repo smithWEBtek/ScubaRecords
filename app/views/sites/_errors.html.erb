@@ -1,0 +1,12 @@
+
+<% if @site.errors.any? %>
+  <div class="field_with_errors">
+    <h2><%= pluralize(@site.errors.count, "error") %> prohibited this article from being saved:</h2>
+
+    <ul>
+    <% @site.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
