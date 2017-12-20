@@ -12,6 +12,7 @@ class RecordsController < ApplicationController
     @record.site_id = @site.id
     @record.user_id = current_user.id
     if @record.save
+      flash[:notice] = "Record was successfully created"
       redirect_to user_site_path(current_user, @site)
     else
       render 'new'
@@ -24,6 +25,7 @@ class RecordsController < ApplicationController
 
   def update
     if @record.update(record_params)
+      flash[:notice] = "Record was successfully updated"
       redirect_to user_site_path(current_user, @site)
     else
       render 'edit'
@@ -32,6 +34,7 @@ class RecordsController < ApplicationController
 
   def destroy
     @record.destroy
+    flash[:notice] = "Record was successfully deleted"
     redirect_to user_site_path(current_user, @site)
   end
 

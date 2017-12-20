@@ -26,6 +26,7 @@ class SitesController < ApplicationController
     @site = Site.new(site_params)
     @site.records.each { |record| record.user = current_user }
     if @site.save
+      flash[:notice] = "Site was successfully created"
       redirect_to user_site_path(current_user, @site)
     else
       render 'new'
@@ -37,6 +38,7 @@ class SitesController < ApplicationController
 
   def update
     if @site.update(site_params)
+      flash[:notice] = "Site was successfully updated"
       redirect_to user_site_path(current_user, @site)
     else
       render 'edit'
@@ -45,6 +47,7 @@ class SitesController < ApplicationController
 
   def destroy
     @site.destroy
+    flash[:notice] = "Site was successfully deleted"
     redirect_to user_sites_path(current_user)
   end
 
