@@ -1,24 +1,22 @@
-# README
+# Scuba Records
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This Rails app allows users to search for scuba diving locations, sign in to add scuba sites and records to your profile.
 
-Things you may want to cover:
+# Installation
 
-* Ruby version
+git address https://github.com/etellezp/ScubaRecords
 
-* System dependencies
+git clone git@github.com:etellezp/ScubaRecords.git
 
-* Configuration
+cd ScubaRecords |
+bundle install |
+rails db:migrate |
+rails s
 
-* Database creation
+# Contributing
 
-* Database initialization
+Bug reports and pull requests are welcome on GitHub at https://github.com/etellezp/ScubaRecords. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the Contributor Covenant code of conduct.
 
-* How to run the test suite
+# License
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+This application is available as open source under the terms of the MIT License.
