@@ -8,4 +8,11 @@ class Record < ApplicationRecord
   validates :max_depth, presence: true
   validates :water_temperature, presence: true
   validates :notes, presence: true
+
+  def self.extreme_dives
+    @extreme_dives = self.all.select do |extreme_dive|
+      extreme_dive.max_depth >= 120
+    end
+  end
+
 end

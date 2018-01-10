@@ -1,0 +1,5 @@
+<h2>Extreme Dives</h2>
+
+<% @extreme_dives.each do |extreme_dive| %>
+  <%= link_to extreme_dive.site.name, user_site_path(current_user, extreme_dive.site) %>
+<% end %>

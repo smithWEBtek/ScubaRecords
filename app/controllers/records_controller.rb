@@ -1,6 +1,6 @@
 class RecordsController < ApplicationController
   before_action :authenticate_user!
-  before_action :find_site
+  before_action :find_site, except: [:extreme_dives]
   before_action :find_record, only: [:edit, :update, :destroy]
 
   def new
@@ -36,6 +36,10 @@ class RecordsController < ApplicationController
     @record.destroy
     flash[:notice] = "Record was successfully deleted"
     redirect_to user_site_path(current_user, @site)
+  end
+
+  def extreme_dives
+    @extreme_dives = Record.extreme_dives
   end
 
   private

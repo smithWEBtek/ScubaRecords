@@ -11,6 +11,7 @@
   <p>
     <%= link_to "Back", user_path(current_user), class: "btn btn-outline-dark btn-sm" %>
     <%= link_to "Add a Site", new_user_site_path(current_user), class: "btn btn-outline-primary btn-sm" %>
+    <%= link_to "Extreme Dives", records_extreme_dives_path, class: "btn btn-outline-success btn-sm" %>
   </p>
 
   <% @sites.each do |site| %>

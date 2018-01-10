@@ -14,4 +14,6 @@ Rails.application.routes.draw do
     resources :records
   end
 
+  get 'records/extreme_dives' => 'records#extreme_dives'
+
 end
