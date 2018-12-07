@@ -1,15 +1,14 @@
-<div class="jumbotron">
+<div class="container my-auto">
+  <div class="row text-center">
+    <div class="jumbotron mt-5 col-lg-10 mx-auto">
+      <h1 class="display-4">Welcome to Scuba Records</h1>
 
-  <h1 class="display-3">Welcome to Scuba Records</h1>
-
-  <p class="lead">
-    The web app that lets you search for dive sites, record your dive experience and see other records from other users
-  </p>
-
-    <%= link_to "View Scuba Sites", sites_path, class: "btn btn-lg btn-primary" %>
-
-    <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-lg btn-link" %>
-
-    <%= link_to "Log In", new_user_session_path, class: "btn btn-lg btn-link" %>
-
+      <div class="col-lg-8 mx-auto">
+        <p class="lead">
+          The web app that lets you search for dive sites, record your dive experience and see other records from other users
+        </p>
+        <%= link_to "View Scuba Sites", sites_path, class: "btn btn-lg btn-primary" %>
+      </div>
+    </div>
+  </div>
 </div>
