@@ -16,7 +16,7 @@
 
   <li class="d-flex justify-content-center align-items-center flex-column">
     <p>
-      <b>Created By:</b> <em><%= record.user.username.capitalize %></em>
+      <b>Created By:</b> <em><%= link_to record.user.username.capitalize, user_path(record.user) %></em>
     </p>
 
     <p>
