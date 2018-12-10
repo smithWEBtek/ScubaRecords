@@ -1,5 +1,4 @@
-class Site < ApplicationRecord
-  belongs_to :category 
+class Site < ApplicationRecord 
   has_many :records
   has_many :users, through: :records
 
