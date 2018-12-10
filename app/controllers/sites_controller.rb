@@ -4,10 +4,8 @@ class SitesController < ApplicationController
 
   def index
     @sites = Site.all
-    if params[:user_id] && current_user
-      @sites = current_user.sites.order("created_at DESC").uniq
-    elsif params[:site_name]
-      @sites = Site.search(params[:site_name])
+    if params[:site_name]
+      @sites = Site.search(params[:site_name]).order("created_at DESC")
     else
       @sites = Site.all.order("created_at DESC")
     end
@@ -18,12 +16,12 @@ class SitesController < ApplicationController
   end
 
   def new
-    @site = Site.new
+    @site = current_user.sites.build
     @site.records.build
   end
 
   def create
-    @site = Site.new(site_params)
+    @site = current_user.sites.build(site_params)
     @site.records.each { |record| record.user = current_user }
     if @site.save
       flash[:notice] = "Site was successfully created"
@@ -34,6 +32,10 @@ class SitesController < ApplicationController
   end
 
   def edit
+    unless current_user.id == @site.user_id
+      flash[:notice] = "You do not have access to edit this site"
+      redirect_to user_site_path(current_user, @site)
+    end
   end
 
   def update
