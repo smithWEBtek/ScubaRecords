@@ -5,7 +5,7 @@ $( document ).ready(function() {
       method: "GET",
       url: this.href,
     }).done(function(data) {
-      console.log(data)
+      $("div.js-records").html(data);
     });
   });
 });
