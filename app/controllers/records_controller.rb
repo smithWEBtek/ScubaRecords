@@ -1,7 +1,12 @@
 class RecordsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:index]
   before_action :find_site, except: [:extreme_dives]
   before_action :find_record, only: [:edit, :update, :destroy]
+
+  def index
+    @site = Site.find(params[:site_id])
+    @records = @site.records
+  end
 
   def new
     @record = Record.new

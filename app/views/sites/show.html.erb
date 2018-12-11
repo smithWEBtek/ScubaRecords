@@ -9,43 +9,4 @@
   <% end %>
 </p>
 
-<h3>Records:</h3>
-
-<ol class="border rounded justify-content-center">
-<% @site.records.each do |record| %>
-
-  <li class="d-flex justify-content-center align-items-center flex-column">
-    <p>
-      <b>Created By:</b> <em><%= link_to record.user.username.capitalize, user_path(record.user) %></em>
-    </p>
-
-    <p>
-      <b>Date:</b> <%= record.date %>
-    </p>
-
-    <p>
-      <b>Dive Time:</b> <%= record.dive_time %>
-    </p>
-
-    <p>
-      <b>Max Depth:</b> <%= record.max_depth %>(FT)
-    </p>
-
-    <p>
-      <b>Water Temperature:</b> <%= record.water_temperature %>(F)
-    </p>
-
-    <p>
-      <b>Notes:</b> <%= record.notes %>
-    </p>
-
-    <p>
-      <% if user_signed_in? && (current_user.id == record.user_id) %>
-        <%= link_to "Edit Record", edit_site_record_path(@site, record), class: "btn btn-primary btn-sm"  %> |
-        <%= link_to "Delete Record", site_record_path(@site, record), class: "btn btn-danger btn-sm"  , method: :delete, data: { confirm: "Are you sure?" } %>
-      <% end %>
-    </p>
-  </li>
-  <hr>
-  <% end %>
-</ol>
+<h5><%= link_to "Load Records", site_records_path(@site) %></h5>
