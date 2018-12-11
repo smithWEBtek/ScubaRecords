@@ -1,6 +1,11 @@
 $( document ).ready(function() {
   $(".js-load-records").on("click", function(e) {
     e.preventDefault();
-    alert("You clicked this link");
+    $.ajax({
+      method: "GET",
+      url: this.href,
+    }).done(function(data) {
+      console.log(data)
+    });
   });
 });
