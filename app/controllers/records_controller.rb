@@ -13,7 +13,7 @@ class RecordsController < ApplicationController
   def new
     @record = Record.new
   end
-
+rails
   def create
     @record = Record.new(record_params)
     @record.site_id = @site.id
