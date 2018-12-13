@@ -7,6 +7,18 @@ const siteClickEvents = () => {
     e.preventDefault()
     fetch(`/sites.json`)
       .then(res => res.json())
-      .then(data => console.log(data))
+      .then(data => {
+        $(".js-load-sites").html('')
+        data.forEach(site => {
+          let newSite = new Site(site)
+          console.log(newSite)
+        })
+      })
   })
+}
+
+function Site(site) {
+  this.id = site.id
+  this.name = site.name
+  this.location = site.location
 }
