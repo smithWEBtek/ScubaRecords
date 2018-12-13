@@ -5,6 +5,8 @@ $( document ).ready(function() {
 const siteClickEvents = () => {
   $(".js-sites-button").on("click", (e) => {
     e.preventDefault()
-    alert("hello world")
+    fetch(`/sites.json`)
+      .then(res => res.json())
+      .then(data => console.log(data))
   })
 }
