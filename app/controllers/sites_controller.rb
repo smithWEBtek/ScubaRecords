@@ -8,10 +8,6 @@ class SitesController < ApplicationController
       @sites = Site.search(params[:site_name]).order("created_at DESC")
     else
       @sites = Site.all.order("created_at DESC")
-      respond_to do |f|
-        f.html
-        f.json {render json: @sites}
-      end
     end
   end
 
