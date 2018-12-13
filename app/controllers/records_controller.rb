@@ -6,8 +6,6 @@ class RecordsController < ApplicationController
   def index
     @site = Site.find(params[:site_id])
     @records = @site.records
-
-    render 'records/index', :layout => false
   end
 
   def new
