@@ -13,14 +13,10 @@
     </div>
   </div>
 
-  <div class="mt-3">
-    <% @sites.each do |site| %>
-      <ul>
-        <li>Name: <%= link_to site.name, site_path(site) %></li>
-        <li>Location: <%= site.location %></li>
-      </ul>
-      <hr>
-    <% end %>
+  <%= link_to "Click to see all sites", sites_path, class: "btn btn-primary btn-sm js-sites-button" %>
+
+  <div class="mt-3 js-load-sites">
+
   </div>
 
 </div>
