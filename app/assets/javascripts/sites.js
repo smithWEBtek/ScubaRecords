@@ -19,11 +19,14 @@ const siteClickEvents = () => {
 
   $(document).on("click", ".js-site-link", function(e) {
     e.preventDefault()
+    $(".js-load-site-show").html('')
     let siteId = $(this).attr('data-id')
     fetch(`/sites/${siteId}.json`)
       .then(res => res.json())
       .then(data => {
-        console.log(data)
+        let newSite = new Site(data)
+        let siteHtml = newSite.formatSiteShow()
+        $(".js-load-site-show").append(siteHtml)
       })
   })
 }
@@ -42,5 +45,13 @@ Site.prototype.formatSiteIndex = function() {
     </ul>
     <hr>
   `
+  return siteHtml
+}
+
+Site.prototype.formatSiteShow = function() {
+  let siteHtml = `
+    <h3>Name: ${this.name}</h3>
+  `
+
   return siteHtml
 }
