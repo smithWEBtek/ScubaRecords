@@ -17,9 +17,14 @@ const siteClickEvents = () => {
       })
   })
 
-  $(document).on("click", ".js-site-link", (e) => {
+  $(document).on("click", ".js-site-link", function(e) {
     e.preventDefault()
-    alert("you click site link")
+    let siteId = $(this).attr('data-id')
+    fetch(`/sites/${siteId}.json`)
+      .then(res => res.json())
+      .then(data => {
+        console.log(data)
+      })
   })
 }
 
@@ -32,7 +37,7 @@ function Site(site) {
 Site.prototype.formatSiteIndex = function() {
   let siteHtml = `
     <ul>
-      <li>Name: <a href="/sites/${this.id}" class="js-site-link"><strong>${this.name}</strong></a></li>
+      <li>Name: <a href="/sites/${this.id}" data-id="${this.id}" class="js-site-link"><strong>${this.name}</strong></a></li>
       <li>Location: <strong>${this.location}</strong></li>
     </ul>
     <hr>
