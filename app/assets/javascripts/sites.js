@@ -21,6 +21,7 @@ const siteClickEvents = () => {
     e.preventDefault()
     $(".js-load-site-show").html('')
     let siteId = $(this).attr('data-id')
+    history.pushState(null, null, "sites/" + siteId)
     fetch(`/sites/${siteId}.json`)
       .then(res => res.json())
       .then(data => {
@@ -50,8 +51,8 @@ Site.prototype.formatSiteIndex = function() {
 
 Site.prototype.formatSiteShow = function() {
   let siteHtml = `
-    <h3>Name: ${this.name}</h3>
+    <h3>Name: <strong><em>${this.name}</em></strong></h3>
+    <h4>Location: <strong><em>${this.location}</em></strong></h4>
   `
-
   return siteHtml
 }
