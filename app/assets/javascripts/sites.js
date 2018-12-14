@@ -16,6 +16,11 @@ const siteClickEvents = () => {
         })
       })
   })
+
+  $(document).on("click", ".js-site-link", (e) => {
+    e.preventDefault()
+    alert("you click site link")
+  })
 }
 
 function Site(site) {
@@ -27,7 +32,7 @@ function Site(site) {
 Site.prototype.formatSiteIndex = function() {
   let siteHtml = `
     <ul>
-      <li>Name: <a href="/sites/${this.id}" class="js-site-show"><strong>${this.name}</strong></a></li>
+      <li>Name: <a href="/sites/${this.id}" class="js-site-link"><strong>${this.name}</strong></a></li>
       <li>Location: <strong>${this.location}</strong></li>
     </ul>
     <hr>
