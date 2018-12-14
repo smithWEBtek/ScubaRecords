@@ -26,7 +26,11 @@ function Site(site) {
 
 Site.prototype.formatSiteIndex = function() {
   let siteHtml = `
-    <h1>${this.name}</h1>
+    <ul>
+      <li>Name: <a href="/sites/${this.id}"><strong>${this.name}</strong></a></li>
+      <li>Location: <strong>${this.location}</strong></li>
+    </ul>
+    <hr>
   `
 
   return siteHtml
