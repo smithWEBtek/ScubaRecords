@@ -6,6 +6,7 @@ class RecordsController < ApplicationController
   def index
     @site = Site.find(params[:site_id])
     @records = @site.records
+    render json: @records 
   end
 
   def new
