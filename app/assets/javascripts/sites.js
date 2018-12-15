@@ -45,26 +45,12 @@ const siteClickEvents = () => {
       })
   })
 
-  $(document).on("click", ".js-site-records-btn", function(e) {
-    e.preventDefault()
-    let siteId = $(this).attr('data-id')
-    fetch(`sites/${siteId}.json`)
-      .then(res => res.json())
-      .then(data => {
-        data.records.forEach(record => {
-          let newRecord = new Site(record)
-          let siteHtml = newRecord.formatSiteRecords()
-          $('.js-site-records').append(siteHtml)
-        })
-      })
-  })
 }
 
 function Site(site) {
   this.id = site.id
   this.name = site.name
   this.location = site.location
-  this.records = site.records
 }
 
 Site.prototype.formatSiteIndex = function() {
@@ -88,22 +74,5 @@ Site.prototype.formatSiteShow = function() {
 
     </div>
   `
-  return siteHtml
-}
-
-Site.prototype.formatSiteRecords = function() {
-  let siteHtml = `
-    <ol class="border rounded justify-content-center">
-      <li class="d-flex justify-content-center align-items-center flex-column">
-        <p>
-          Created By: ${this.user}
-        </p>
-        <p>
-          Data: ${this.date}
-        </p>
-      </li>
-    </ol>
-  `
-
   return siteHtml
 }
