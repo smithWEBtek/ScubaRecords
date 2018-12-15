@@ -1,4 +1,4 @@
-class Site < ApplicationRecord 
+class Site < ApplicationRecord
   has_many :records
   has_many :users, through: :records
 
@@ -18,4 +18,14 @@ class Site < ApplicationRecord
   end
 
   scope :search, ->(site_name) { where("name LIKE ? OR location LIKE ?", "%#{site_name}%", "%#{site_name}%") }
+
+  def next
+    site = Site.where("id > ?", id).first
+    if site
+      site
+    else
+      Site.first
+    end
+  end
+
 end

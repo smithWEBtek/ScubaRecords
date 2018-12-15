@@ -1,6 +1,6 @@
 class SitesController < ApplicationController
   before_action :find_site_by_current_user, only: [:edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show, :next]
 
   def index
     @sites = Site.all
@@ -24,7 +24,10 @@ class SitesController < ApplicationController
   end
 
   def next
-  end 
+    @site = Site.find(params[:id])
+    @next_site = @site.next
+    render json: @next_site
+  end
 
   def new
     @site = current_user.sites.build

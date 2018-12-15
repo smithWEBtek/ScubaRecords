@@ -33,8 +33,15 @@ const siteClickEvents = () => {
 
   $(document).on("click", ".js-next-site", function(e) {
     e.preventDefault()
+    $(".js-load-site-show").html('')
     let siteId = $(this).attr('data-id')
-    fetch(`sites/${siteId}/next`)
+    fetch(`/sites/${siteId}/next.json`)
+      .then(res => res.json())
+      .then(data => {
+        let newSite = new Site(data)
+        let siteHtml = newSite.formatSiteShow()
+        $(".js-load-site-show").append(siteHtml)
+      })
   })
 }
 
@@ -59,7 +66,7 @@ Site.prototype.formatSiteShow = function() {
   let siteHtml = `
     <h3>Name: <strong><em>${this.name}</em></strong></h3>
     <h4>Location: <strong><em>${this.location}</em></strong></h4>
-    <button class="btn btn-primary btn-sm js-next-site">Next Site</button>
+    <button data-id="${this.id}" class="btn btn-primary btn-sm js-next-site">Next Site</button>
   `
   return siteHtml
 }
