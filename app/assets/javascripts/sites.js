@@ -21,7 +21,7 @@ const siteClickEvents = () => {
     e.preventDefault()
     $(".js-load-site-show").html('')
     let siteId = $(this).attr('data-id')
-    history.pushState(null, null, "sites/" + siteId)
+    //history.pushState(null, null, "sites/" + siteId)
     fetch(`/sites/${siteId}.json`)
       .then(res => res.json())
       .then(data => {
@@ -35,6 +35,7 @@ const siteClickEvents = () => {
     e.preventDefault()
     $(".js-load-site-show").html('')
     let siteId = $(this).attr('data-id')
+    //history.pushState(null, null, "sites/" + siteId)
     fetch(`/sites/${siteId}/next.json`)
       .then(res => res.json())
       .then(data => {
