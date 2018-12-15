@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   root 'welcome#home'
 
   resources :categories
-  
+
   resources :users do
     resources :sites
   end
@@ -17,5 +17,7 @@ Rails.application.routes.draw do
   end
 
   get 'records/extreme_dives' => 'records#extreme_dives'
+
+  get 'sites/:id/next' => 'sites#next'
 
 end

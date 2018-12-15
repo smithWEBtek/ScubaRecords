@@ -23,6 +23,9 @@ class SitesController < ApplicationController
     end
   end
 
+  def next
+  end 
+
   def new
     @site = current_user.sites.build
     @site.records.build

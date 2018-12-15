@@ -30,6 +30,12 @@ const siteClickEvents = () => {
         $(".js-load-site-show").append(siteHtml)
       })
   })
+
+  $(document).on("click", ".js-next-site", function(e) {
+    e.preventDefault()
+    let siteId = $(this).attr('data-id')
+    fetch(`sites/${siteId}/next`)
+  })
 }
 
 function Site(site) {
@@ -53,6 +59,7 @@ Site.prototype.formatSiteShow = function() {
   let siteHtml = `
     <h3>Name: <strong><em>${this.name}</em></strong></h3>
     <h4>Location: <strong><em>${this.location}</em></strong></h4>
+    <button class="btn btn-primary btn-sm js-next-site">Next Site</button>
   `
   return siteHtml
 }
