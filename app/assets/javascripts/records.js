@@ -20,7 +20,7 @@ const recordClickEvents = () => {
 
   $(document).on("click", ".js-add-new-record-btn", function(e) {
     e.preventDefault()
-    console.log("hijack!")
+    $(".js-record-form").html('the record will go here :)')
   })
 }
 
@@ -60,4 +60,11 @@ Record.prototype.formatRecords = function() {
     </ol>
   `
   return recordHtml
+}
+
+Record.prototype.formatRecordForm = function() {
+  let recordForm = `
+
+  `
+  return recordForm
 }

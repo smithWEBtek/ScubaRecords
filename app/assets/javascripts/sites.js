@@ -71,6 +71,8 @@ Site.prototype.formatSiteShow = function() {
     <button data-id="${this.id}" class="btn btn-primary btn-sm js-next-site">Next Site</button>
     <button data-id="${this.id}" class="btn btn-info btn-sm js-site-records-btn" data-id="${this.id}">Check Records</button>
     <a class="btn btn-outline-primary btn-sm js-add-new-record-btn" href="/sites/${this.id}/records/new">Add a New Record</a>
+    <div class="js-record-form">
+    </div>
     <div class="js-site-records">
 
     </div>
