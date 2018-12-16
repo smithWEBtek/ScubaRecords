@@ -17,6 +17,11 @@ const recordClickEvents = () => {
         })
       })
   })
+
+  $(document).on("click", ".js-add-new-record-btn", function(e) {
+    e.preventDefault()
+    console.log("hijack!")
+  })
 }
 
 function Record(record) {
