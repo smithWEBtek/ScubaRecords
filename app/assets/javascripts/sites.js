@@ -69,7 +69,7 @@ Site.prototype.formatSiteShow = function() {
     <h3>Name: <strong><em>${this.name}</em></strong></h3>
     <h4>Location: <strong><em>${this.location}</em></strong></h4>
     <button data-id="${this.id}" class="btn btn-primary btn-sm js-next-site">Next Site</button>
-    <button data-id="${this.id}" class="btn btn-info btn-sm js-site-records-btn">Check Records</button>
+    <button data-id="${this.id}" class="btn btn-info btn-sm js-site-records-btn" data-id="${this.id}">Check Records</button>
     <div class="js-site-records">
 
     </div>
