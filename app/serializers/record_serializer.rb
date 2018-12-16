@@ -1,5 +1,5 @@
 class RecordSerializer < ActiveModel::Serializer
-  attributes :id, :data, :dive_time, :max_depth, :water_temperature, :notes
+  attributes :id, :date, :dive_time, :max_depth, :water_temperature, :notes
 
-  belongs_to :site 
+  belongs_to :site
 end
