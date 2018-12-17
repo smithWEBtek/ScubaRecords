@@ -18,7 +18,8 @@ class RecordsController < ApplicationController
     @record.site_id = @site.id
     @record.user_id = current_user.id
     if @record.save
-      render json: @record
+      flash[:notice] = "Record was successfully created"
+      redirect_to user_site_path(current_user, @site)
     else
       render 'new'
     end
