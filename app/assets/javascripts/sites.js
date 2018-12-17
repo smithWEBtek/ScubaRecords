@@ -48,7 +48,19 @@ const siteClickEvents = () => {
     let url = this.attributes.href.textContent
     $.get(url).done(res => {
       $(".js-site-new-form").html(res)
-      
+      $("#new_site").on("submit", function(e) {
+        e.preventDefault();
+        $.ajax({
+          method: 'POST',
+          url: this.action,
+          data: $(this).serialize(),
+          success: response => {
+            let newSite = new Site(response)
+            let newSiteHtml = newSite.formatUserSites()
+            $(".js-user-sites").append(newSiteHtml)
+          }
+        })
+      })
     })
   })
 
@@ -58,6 +70,7 @@ function Site(site) {
   this.id = site.id
   this.name = site.name
   this.location = site.location
+  this.records = site.records
 }
 
 Site.prototype.formatSiteIndex = function() {
@@ -81,6 +94,17 @@ Site.prototype.formatSiteShow = function() {
     <div class="js-site-records">
 
     </div>
+  `
+  return siteHtml
+}
+
+Site.prototype.formatUserSites = function() {
+  let siteHtml = `
+    <ul>
+      <li>Name: <a href="/sites/${this.id}" data-id="${this.id}" class="js-site-link"><strong>${this.name}</strong></a></li>
+      <li>Location: <strong>${this.location}</strong></li>
+    </ul>
+    <hr>
   `
   return siteHtml
 }
