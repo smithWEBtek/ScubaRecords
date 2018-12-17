@@ -6,7 +6,7 @@ class RecordsController < ApplicationController
   def index
     @site = Site.find(params[:site_id])
     @records = @site.records
-      render json: @records
+    render json: @records
   end
 
   def new
@@ -18,7 +18,7 @@ class RecordsController < ApplicationController
     @record.site_id = @site.id
     @record.user_id = current_user.id
     if @record.save
-      render json: @record 
+      render json: @record
     else
       render 'new'
     end
