@@ -7,7 +7,6 @@ const recordClickEvents = () => {
     e.preventDefault()
     $(".js-site-records").html('')
     let siteId = $(this).attr('data-id')
-    history.pushState(null, null, "/records")
     fetch(`sites/${siteId}/records.json`)
       .then(res => res.json())
       .then(data => {
@@ -19,18 +18,18 @@ const recordClickEvents = () => {
       })
   })
 
-  $('form#new_record').on("submit", function(e) {
-    e.preventDefault
-    $(".js-site-records").html('')
+  $("#new_record").on("submit", function(e) {
+    e.preventDefault()
     $.ajax({
       method: 'POST',
       url: this.action,
       data: $(this).serialize(),
       dataType: 'json',
       success: function(response) {
-        let newRecord = new Record(response)
-        let recordHtml = newRecord.formatRecords()
-        $(".js-site-records").append(recordHtml)
+        $(".js-site-records").html('')
+        let record = new Record(response)
+        let siteRecords = record.formatRecords()
+        $(".js-site-records").append(siteRecords)
       }
     })
   })

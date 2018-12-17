@@ -1,0 +1,24 @@
+<ol class="border rounded justify-content-center">
+  <% @records.each do |record| %>
+    <li class="d-flex justify-content-center align-items-center flex-column">
+      <p>
+        <strong>Created by:</strong><%= record.user.username %>
+      </p>
+      <p>
+        <strong>Date:</strong><%= record.date %>
+      </p>
+      <p>
+        <strong>Dive Time:</strong><%= record.dive_time %>
+      </p>
+      <p>
+        <strong>Max Depth:</strong><%= record.max_depth %>(Ft)
+      </p>
+      <p>
+        <strong>Water Temperature:</strong><%= record.water_temperature %>(F)
+      </p>
+      <p>
+        <strong>Notes:</strong><%= record.notes %>
+      </p>
+    </li>
+  <% end %>
+</ol>
