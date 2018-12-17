@@ -35,9 +35,6 @@ Record.prototype.formatRecords = function() {
     <ol class="border rounded justify-content-center">
       <li class="d-flex justify-content-center align-items-center flex-column">
         <p>
-          <strong>Created by:</strong> ${this.user_id}
-        </p>
-        <p>
           <strong>Date:</strong> ${this.date}
         </p>
         <p>
