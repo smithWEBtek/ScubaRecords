@@ -32,6 +32,7 @@ class SitesController < ApplicationController
   def new
     @site = current_user.sites.build
     @site.records.build
+    render :partial => 'sites/form', :layout => false
   end
 
   def create

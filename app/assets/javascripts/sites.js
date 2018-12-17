@@ -43,6 +43,15 @@ const siteClickEvents = () => {
       })
   })
 
+  $(document).on("click", ".js-site-form-btn", function(e) {
+    e.preventDefault()
+    let url = this.attributes.href.textContent
+    $.get(url).done(res => {
+      $(".js-site-new-form").html(res)
+      
+    })
+  })
+
 }
 
 function Site(site) {
