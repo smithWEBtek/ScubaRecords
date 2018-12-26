@@ -49,7 +49,7 @@ const siteClickEvents = () => {
     $.get(url).done(res => {
       $(".js-site-new-form").html(res)
       $("#new_site").on("submit", function(e) {
-        e.preventDefault();
+        e.preventDefault()
         $.ajax({
           method: 'POST',
           url: this.action,
