@@ -1,9 +1,10 @@
-$( document ).ready(function() {
+$(document).ready(function () {
+  console.log('sites.js loaded ...');
   siteClickEvents();
 });
 
 const siteClickEvents = () => {
-  $(".js-sites-button").on("click", (e) => {
+  $("a.js-sites-button").on("click", (e) => {
     e.preventDefault()
     fetch(`/sites.json`)
       .then(res => res.json())
@@ -17,7 +18,7 @@ const siteClickEvents = () => {
       })
   })
 
-  $(document).on("click", ".js-site-link", function(e) {
+  $(document).on("click", ".js-site-link", function (e) {
     e.preventDefault()
     $(".js-load-site-show").html('')
     let siteId = $(this).attr('data-id')
@@ -30,7 +31,7 @@ const siteClickEvents = () => {
       })
   })
 
-  $(document).on("click", ".js-next-site", function(e) {
+  $(document).on("click", ".js-next-site", function (e) {
     e.preventDefault()
     $(".js-load-site-show").html('')
     let siteId = $(this).attr('data-id')
@@ -43,12 +44,12 @@ const siteClickEvents = () => {
       })
   })
 
-  $(document).on("click", ".js-site-form-btn", function(e) {
+  $(document).on("click", ".js-site-form-btn", function (e) {
     e.preventDefault()
     let url = this.attributes.href.textContent
     $.get(url).done(res => {
       $(".js-site-new-form").html(res)
-      $("#new_site").on("submit", function(e) {
+      $("#new_site").on("submit", function (e) {
         e.preventDefault()
         $.ajax({
           method: 'POST',
@@ -63,7 +64,6 @@ const siteClickEvents = () => {
       })
     })
   })
-
 }
 
 function Site(site) {
@@ -73,7 +73,7 @@ function Site(site) {
   this.records = site.records
 }
 
-Site.prototype.formatSiteIndex = function() {
+Site.prototype.formatSiteIndex = function () {
   let siteHtml = `
     <ul>
       <li>Name: <a href="/sites/${this.id}" data-id="${this.id}" class="js-site-link"><strong>${this.name}</strong></a></li>
@@ -84,7 +84,7 @@ Site.prototype.formatSiteIndex = function() {
   return siteHtml
 }
 
-Site.prototype.formatSiteShow = function() {
+Site.prototype.formatSiteShow = function () {
   let siteHtml = `
     <h3>Name: <strong><em>${this.name}</em></strong></h3>
     <h4>Location: <strong><em>${this.location}</em></strong></h4>
@@ -98,7 +98,7 @@ Site.prototype.formatSiteShow = function() {
   return siteHtml
 }
 
-Site.prototype.formatUserSites = function() {
+Site.prototype.formatUserSites = function () {
   let siteHtml = `
     <ul>
       <li>Name: <a href="/sites/${this.id}" data-id="${this.id}" class="js-site-link"><strong>${this.name}</strong></a></li>

@@ -1,21 +1,22 @@
-$(document).ready(function() {
+$(document).ready(function () {
+  console.log('records.js loaded ...')
   recordClickEvent()
 })
 
 const recordClickEvent = () => {
-  $(document).on("click", ".js-site-records-btn", function(e) {
-  e.preventDefault()
-  $(".js-site-records").html('')
-  let siteId = $(this).attr('data-id')
-  fetch(`sites/${siteId}/records.json`)
-    .then(res => res.json())
-    .then(data => {
-      data.forEach(record => {
-        let newRecord = new Record(record)
-        let recordHtml = newRecord.formatRecords()
-        $(".js-site-records").append(recordHtml)
+  $(document).on("click", ".js-site-records-btn", function (e) {
+    e.preventDefault()
+    $(".js-site-records").html('')
+    let siteId = $(this).attr('data-id')
+    fetch(`sites/${siteId}/records.json`)
+      .then(res => res.json())
+      .then(data => {
+        data.forEach(record => {
+          let newRecord = new Record(record)
+          let recordHtml = newRecord.formatRecords()
+          $(".js-site-records").append(recordHtml)
+        })
       })
-    })
   })
 }
 
@@ -30,7 +31,7 @@ function Record(record) {
 }
 
 
-Record.prototype.formatRecords = function() {
+Record.prototype.formatRecords = function () {
   let recordHtml = `
     <ol class="border rounded justify-content-center">
       <li class="d-flex justify-content-center align-items-center flex-column">
